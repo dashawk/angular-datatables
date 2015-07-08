@@ -343,7 +343,7 @@ function dtPromiseRenderer($q, $timeout, $log, DTRenderer, DTRendererService, DT
             // See https://github.com/l-lin/angular-datatables/issues/110
             
             // Check if promise has returned the right data 
-            if(typeof data !== 'undefined' || data !== null) {
+            if(typeof data !== 'undefined') {
                 delete data.$promise;
             }
             
