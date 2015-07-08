@@ -341,7 +341,12 @@ function dtPromiseRenderer($q, $timeout, $log, DTRenderer, DTRendererService, DT
             // Since Angular 1.3, the promise renderer is throwing "Maximum call stack size exceeded"
             // By removing the $promise attribute, we avoid an infinite loop when jquery is cloning the data
             // See https://github.com/l-lin/angular-datatables/issues/110
-            delete data.$promise;
+            
+            // Check if promise has returned the right data 
+            if(typeof data !== 'undefined' || data !== null) {
+                delete data.$promise;
+            }
+            
             options.aaData = data;
             // Add $timeout to be sure that angular has finished rendering before calling datatables
             $timeout(function() {
